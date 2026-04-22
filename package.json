@@ -1,0 +1,87 @@
+{
+  "name": "pymanual",
+  "displayName": "Pymanual — Python Documentation",
+  "description": "Open the documentation page for a highlighted Python module in your browser.",
+  "version": "1.0.0",
+  "publisher": "gkarpo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gkarpo/pymanual-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gkarpo/pymanual-vscode/issues"
+  },
+  "homepage": "https://github.com/gkarpo/pymanual-vscode#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:python"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pymanual.showDocs",
+        "title": "Show Documentation",
+        "category": "Pymanual"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "pymanual.showDocs",
+          "when": "editorLangId == python && editorHasSelection",
+          "group": "navigation@99"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Pymanual",
+      "properties": {
+        "pymanual.cliPath": {
+          "type": "string",
+          "default": "pymanual",
+          "description": "Path to the `pymanual` CLI. Leave as default to use whatever is on PATH."
+        },
+        "pymanual.useNetwork": {
+          "type": "boolean",
+          "default": true,
+          "description": "Allow the resolver to query PyPI when installed metadata is incomplete. Disable for offline-only resolution."
+        },
+        "pymanual.useCache": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use the resolver's local cache. When disabled, passes --no-cache to the CLI."
+        },
+        "pymanual.browser": {
+          "type": "string",
+          "enum": [
+            "external",
+            "internal"
+          ],
+          "enumDescriptions": [
+            "Open the URL in your system's default browser.",
+            "Open the URL in VS Code's built-in Simple Browser tab."
+          ],
+          "default": "external",
+          "description": "Which browser to open the documentation URL in."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
