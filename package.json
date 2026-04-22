@@ -2,7 +2,7 @@
   "name": "pymanual",
   "displayName": "Pymanual — Python Documentation",
   "description": "Open the documentation page for a highlighted Python module in your browser.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "gkarpo",
   "license": "MIT",
   "repository": {
@@ -17,7 +17,16 @@
     "vscode": "^1.85.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages",
+    "Education"
+  ],
+  "keywords": [
+    "python",
+    "documentation",
+    "docs",
+    "pypi",
+    "modules",
+    "reference"
   ],
   "activationEvents": [
     "onLanguage:python"
